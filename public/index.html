@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.8.6/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.8.6/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.8.6/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.8.6/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.8.6/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+  </head>
+  <body>
+    <h3>Registro</h3>
+    <input id="email" type="email"/>
+    <input id="password" type="password"/>
+    <button onclick="register()">Button</button>
+    
+    <h3>Ingreso</h3>
+    <input id="emailSession" type="email"/>
+    <input id="passwordSession" type="password"/>
+    <button onclick="logIn()">Button</button>
+
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDBsx2NgOQz9-6z1cBUg5oTf0UIifZHeSc",
+      authDomain: "practice-46da9.firebaseapp.com",
+      databaseURL: "https://practice-46da9.firebaseio.com",
+      projectId: "practice-46da9",
+      storageBucket: "practice-46da9.appspot.com",
+      messagingSenderId: "515052594173"
+    };
+    firebase.initializeApp(config);
+  </script>
+    <script type="text/javascript" src="JS/index.js"></script>
+
+
+    
+  </body>
+</html>
