@@ -5,6 +5,11 @@ function register(){
     console.log(password)
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
+
+    .then(function(){
+      verificacion();
+    })
+
     .catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -37,6 +42,7 @@ function observador(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           console.log("existe usuario activo")
+          aparece(user);
           // User is signed in.
           var displayName = user.displayName;
           var email = user.email;
@@ -46,6 +52,7 @@ function observador(){
           var uid = user.uid;
           var providerData = user.providerData;
           console.log(user.email)
+          console.log(emailVerified)
           // ...
         } else {
         console.log("no existe usuario activo")
@@ -57,3 +64,39 @@ function observador(){
 }
 
 observador();
+
+function aparece(user){
+  var user = user;
+  var contenido = document.getElementById("contenido");
+  if(user.emailVerified){
+    contenido.innerHTML = 
+    `
+    <button onclick="cerrar()">Cerrar Sesion</button>
+    <p>Bienvenido </p>
+    
+    `
+    ;
+  }
+}
+
+function cerrar(){
+  firebase.auth().signOut().then(function() {
+    console.log("Saliendo...")
+    // Sign-out successful.
+  }).catch(function(error) {
+    console.log(error)
+    // An error happened.
+  });
+}
+
+function verificacion(){
+    
+  var user = firebase.auth().currentUser;
+  
+  user.sendEmailVerification().then(function() {
+    console.log("Enviado");
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
+}
